@@ -1,10 +1,5 @@
 os.loadAPI('apis/move')
 
-move.toX(10)
-move.toY(15)
-returnHome()
-readyUp()
-
 local function cutTree()
     while turtle.detectUp() do
         turtle.digUp()
@@ -47,3 +42,8 @@ local function readyUp()
     turtle.refuel(amount)
     move.turnRight()
 end
+
+move.toX(10)
+move.toY(15)
+returnHome()
+readyUp()
