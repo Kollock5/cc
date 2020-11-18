@@ -5,7 +5,7 @@ move.toY(15)
 returnHome()
 readyUp()
 
-function cutTree()
+local function cutTree()
     end
     while turtle.detectUp() do
         turtle.digUp()
@@ -16,7 +16,7 @@ function cutTree()
     end
 end
 
-function unload()
+local function unload()
     local i = 3
     while i <= 16 do
         turtle.select(i)
@@ -25,7 +25,7 @@ function unload()
     end
 end
 
-function returnHome()
+local function returnHome()
     while not move.toZ(20) do
         turtle.digUp()
     end
@@ -34,7 +34,7 @@ function returnHome()
     move.toZ(0)
 end
 
-function readyUp()
+local function readyUp()
     move.faceDirection(2)
     unload()
     move.turnLeft()
