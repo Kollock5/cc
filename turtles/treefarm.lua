@@ -3,12 +3,18 @@ os.loadAPI('apis/move')
 local row = 5
 local column = 5
 
+local function startUp()
+    if not (move.x == 0 and move.y == 0 and move.z == 0) then
+        returnHome()
+    end
+    readyUp()
+end
 
 local function main()
     startUp()
 end
 
-local farmTrees()
+local function farmTrees()
     move.up()
     move.forward()
     move.forward()
@@ -30,7 +36,7 @@ local farmTrees()
             end
         end
         move.forward()
-        if i % 2 = 0 then
+        if i % 2 == 0 then
             move.turnLeft()
             move.forward()
             move.forward()
@@ -44,13 +50,6 @@ local farmTrees()
             move.turnRight()
         end
     end
-end
-
-local function startUp()
-    if not (move.x == 0 and move.y == 0 and move.z == 0) then
-        returnHome()
-    end
-    readyUp()
 end
 
 local function cutTree()
