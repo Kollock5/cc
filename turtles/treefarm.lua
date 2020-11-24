@@ -110,7 +110,13 @@ end
 local function main()
     move.init()
     startUp()
-    farmTrees()
+    while true do
+        farmTrees()
+        returnHome()
+        readyUp()
+        sleep(500)
+    end
+
 end
 
 
