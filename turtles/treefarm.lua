@@ -11,7 +11,9 @@ local function cutTree()
         turtle.digUp()
         turtle.up()
     end
-    move.toZ(1)
+    sleep(10)
+    print(move.toZ(1))
+    sleep(10)
     turtle.placeDown()
 end
 
@@ -96,8 +98,9 @@ local function startUp()
 end
 
 local function main()
+    move.init()
     startUp()
-    farmTrees()
+    --farmTrees()
 end
 
 
