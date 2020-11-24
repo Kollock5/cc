@@ -1,4 +1,4 @@
-facingDirection = 0
+local facingDirection = 0
 local x = 0
 local y = 0
 local z = 0
@@ -13,6 +13,10 @@ end
 
 function getY()
     return y
+end
+
+function getFd()
+    return facingDirection
 end
 
 function init()

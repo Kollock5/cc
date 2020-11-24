@@ -53,6 +53,7 @@ end
 local function farmTrees()
     turtle.select(1)
     move.up()
+    turtle.dig()
     move.forward()
 
     local i = 0
@@ -61,7 +62,9 @@ local function farmTrees()
         local j = 0
         while j < column do
             j = j + 1
+            turtle.dig()
             move.forward()
+            turtle.dig()
             move.forward()
             if turtle.detect() then
                 cutTree()
@@ -70,20 +73,29 @@ local function farmTrees()
                 turtle.placeDown()
             end
         end
+        turtle.dig()
         move.forward()
+        turtle.dig()
         move.forward()
+        turtle.dig()
         move.forward()
 
         if i % 2 == 0 then
             move.turnLeft()
+            turtle.dig()
             move.forward()
+            turtle.dig()
             move.forward()
+            turtle.dig()
             move.forward()
             move.turnLeft()
         else
             move.turnRight()
+            turtle.dig()
             move.forward()
+            turtle.dig()
             move.forward()
+            turtle.dig()
             move.forward()
             move.turnRight()
         end
@@ -91,8 +103,7 @@ local function farmTrees()
 end
 
 local function startUp()
-    print(move.getX() .. move.getY() .. move.getZ() .. 'test')
-    if not (move.getX() == 0 and move.getY() == 0 and move.getZ() == 0) then
+    if not (move.getX() == 0 and move.getY() == 0 and move.getZ() == 0 and move.getFd() == 0) then
         returnHome()
     end
     readyUp()
@@ -101,7 +112,7 @@ end
 local function main()
     move.init()
     startUp()
-    --farmTrees()
+    farmTrees()
 end
 
 
