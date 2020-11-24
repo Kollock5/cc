@@ -11,9 +11,7 @@ local function cutTree()
         turtle.digUp()
         move.up()
     end
-    sleep(10)
     print(move.toZ(1))
-    sleep(10)
     turtle.placeDown()
 end
 
