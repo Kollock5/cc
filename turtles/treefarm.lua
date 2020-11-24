@@ -49,6 +49,7 @@ local function readyUp()
 end
 
 local function farmTrees()
+    turtle.select(1)
     move.up()
     move.forward()
     move.forward()
