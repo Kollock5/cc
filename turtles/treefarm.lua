@@ -91,7 +91,7 @@ local function farmTrees()
 end
 
 local function startUp()
-    print(move.x .. move.y .. move.z .. 'test')
+    print(move.getX .. move.getY .. move.getZ .. 'test')
     if not (move.x == 0 and move.y == 0 and move.z == 0) then
         returnHome()
     end

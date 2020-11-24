@@ -1,7 +1,19 @@
 facingDirection = 0
-x = 0
-y = 0
-z = 0
+local x = 0
+local y = 0
+local z = 0
+
+function getX()
+    return x
+end
+
+function getZ()
+    return z
+end
+
+function getY()
+    return y
+end
 
 function init()
     if not fs.exists('saves/localPos/save') then
