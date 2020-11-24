@@ -9,7 +9,7 @@ local function cutTree()
     turtle.digDown()
     while turtle.detectUp() do
         turtle.digUp()
-        turtle.up()
+        move.up()
     end
     sleep(10)
     print(move.toZ(1))
