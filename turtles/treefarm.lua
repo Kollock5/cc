@@ -92,7 +92,7 @@ end
 
 local function startUp()
     print(move.getX() .. move.getY() .. move.getZ() .. 'test')
-    if not (move.x == 0 and move.y == 0 and move.z == 0) then
+    if not (move.getX() == 0 and move.getY() == 0 and move.getZ() == 0) then
         returnHome()
     end
     readyUp()
