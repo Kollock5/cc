@@ -52,8 +52,6 @@ local function farmTrees()
     turtle.select(1)
     move.up()
     move.forward()
-    move.forward()
-    move.forward()
 
     local i = 0
     while i < row do
@@ -71,6 +69,9 @@ local function farmTrees()
             end
         end
         move.forward()
+        move.forward()
+        move.forward()
+
         if i % 2 == 0 then
             move.turnLeft()
             move.forward()
