@@ -2,6 +2,7 @@ local facingDirection = 0
 local x = 0
 local y = 0
 local z = 0
+debug = false
 
 function getX()
     return x
@@ -47,7 +48,9 @@ local function save()
     file.writeLine(y)
     file.writeLine(z)
     file.close()
-    debug()
+    if debug then
+        doDebug()
+    end
 end
  
 function up()
@@ -197,6 +200,6 @@ function toY(targetY)
     return true
 end
 
-function debug()
+function doDebug()
     print('d: ' .. facingDirection .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
 end
