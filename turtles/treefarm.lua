@@ -2,6 +2,7 @@ os.loadAPI('apis/move')
 
 local row = 5
 local column = 5
+local sleeptimer = 100
 
 local function cutTree()
     turtle.dig()
@@ -11,7 +12,7 @@ local function cutTree()
         turtle.digUp()
         move.up()
     end
-    print(move.toZ(1))
+    move.toZ(1)
     turtle.placeDown()
 end
 
@@ -116,7 +117,13 @@ local function main()
         farmTrees()
         returnHome()
         readyUp()
-        sleep(100)
+        local i = 0
+        while i < 100 do
+            term.clear()
+            print('Wait time remaining: ' .. i .. '/' .. sleeptimer)
+            i = i + 1
+            sleep(1)
+        end
     end
 
 end
