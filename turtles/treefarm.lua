@@ -43,8 +43,10 @@ local function readyUp()
     move.turnLeft()
     turtle.select(2)
     turtle.suck()
-    local amount = turtle.getItemCount() - 1
-    turtle.refuel(amount)
+    if turtle.getFuelLevel() < 10000 then
+        local amount = turtle.getItemCount() - 1
+        turtle.refuel(amount)
+    end
     move.turnRight()
 end
 
@@ -114,7 +116,7 @@ local function main()
         farmTrees()
         returnHome()
         readyUp()
-        sleep(500)
+        sleep(100)
     end
 
 end
