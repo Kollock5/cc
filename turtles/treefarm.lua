@@ -40,6 +40,8 @@ local function readyUp()
     move.turnLeft()
     turtle.select(1)
     turtle.suck()
+    turtle.select(3)
+    turtle.drop()
     move.turnLeft()
     move.turnLeft()
     turtle.select(2)
@@ -48,6 +50,8 @@ local function readyUp()
         local amount = turtle.getItemCount() - 1
         turtle.refuel(amount)
     end
+    turtle.select(3)
+    turtle.drop()
     move.turnRight()
 end
 
