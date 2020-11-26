@@ -213,5 +213,11 @@ end
 function doDebug()
     if debug then
         print('d: ' .. facingDirection .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
+        local targetD = faceDirection - homeFd
+        if targetD <= 0 then
+            targetD = targetD + 4
+        end
+        print('Local d: ' .. targetD .. ', x: ' .. (x - homeX) .. ', y: ' .. (y - homeY) .. ', z: ' .. (z - homeZ))
+
     end
 end
