@@ -42,13 +42,17 @@ function checkFD()
         print(oldX == x + 1)
 
         if oldX == (x + 1) then 
-            facingDirection = 0
-        elseif oldY == (y - 1) then
-            facingDirection = 1
-        elseif oldX == (x + 1) then
+            facingDirection = 3
+        end
+        if oldY == (y - 1) then
             facingDirection = 2
-        elseif oldY == (y - 1) then
-            facingDirection = 4
+        end
+        if oldX == (x + 1) then
+            facingDirection = 1
+        end
+        if oldY == (y - 1) then
+            facingDirection = 0
+        end
         end
         turtle.back()
     else
