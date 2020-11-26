@@ -77,5 +77,6 @@ else
     tD = args[4]
     tL = args[5]
 end
+move.init()
 moveToTarge()
 moveHome()
