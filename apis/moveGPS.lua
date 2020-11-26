@@ -6,7 +6,7 @@ local homeY = 0
 local homeZ = 0
 local homeFd = 0
 
-debug = false
+debug = true
 
 function getX()
     updatePos()
@@ -32,6 +32,7 @@ function updatePos()
     x = newX
     z = newZ
     y = newY
+    doDebug()
 end
 
 function checkFD()
@@ -210,6 +211,7 @@ function toY(targetY)
 end
 
 function doDebug()
-    updatePos()
-    print('d: ' .. facingDirection .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
+    if debug then
+        print('d: ' .. facingDirection .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
+    end
 end
