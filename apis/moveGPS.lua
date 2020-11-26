@@ -43,6 +43,7 @@ function checkFD()
         elseif oldY > y then
             facingDirection = 4
         end
+        turtle.back()
     else
         return false
     end
