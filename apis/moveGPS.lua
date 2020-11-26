@@ -29,6 +29,7 @@ function updatePos()
 end
 
 function checkFD()
+    print(gps.locate(5))
     updatePos()
     oldX = x
     oldY = y
