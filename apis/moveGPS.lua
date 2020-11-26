@@ -29,18 +29,12 @@ function updatePos()
 end
 
 function checkFD()
-    print(gps.locate(5))
     updatePos()
     oldX = x
     oldY = y
     turtle.dig()
     if turtle.forward() then
-        print(gps.locate(5))
         updatePos()
-        print(oldY)
-        print(y)
-        print(oldX == y + 1)
-
         if oldX == (x + 1) then 
             facingDirection = 3
         end
