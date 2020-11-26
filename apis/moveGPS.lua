@@ -178,9 +178,9 @@ function toX(targetX)
     updatePos()
     if not (targetX == (x - homeX)) then
         if targetX > (x - homeX) then
-            faceDirection(0)
+            faceDirection(3)
         else
-            faceDirection(2)
+            faceDirection(1)
         end
         while not (targetX == (x - homeX)) do
             if forward() == false then
@@ -196,9 +196,9 @@ function toY(targetY)
     updatePos()
     if not (targetY == (y - homeY)) then
         if targetY > (y - homeY) then
-            faceDirection(1)
+            faceDirection(2)
         else
-            faceDirection(3)
+            faceDirection(0)
         end
         while not (targetY == (y - homeY)) do
             if forward() == false then
