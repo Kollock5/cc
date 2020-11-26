@@ -6,7 +6,7 @@ local homeY = 0
 local homeZ = 0
 local homeFd = 0
 
-debug = true
+debug = false
 
 function getX()
     updatePos()
@@ -95,6 +95,7 @@ function reset()
     checkFD()
     file = fs.open('data/gps/save', 'w')
     file.writeLine(fd)
+    setHome()
     file.close()
 end
  
@@ -148,8 +149,8 @@ function faceDirection(d)
     if targetD >= 4 then
         targetD = targetD - 4
     end
-    while not (fd == d) do
-        if fd > d then
+    while not (fd == targetD) do
+        if fd > targetD then
             turnLeft()
         else
             turnRight()
@@ -201,6 +202,82 @@ function toY(targetY)
             faceDirection(0)
         end
         while not (targetY == (y - homeY)) do
+            if forward() == false then
+                return false
+            end
+            updatePos()
+        end
+    end
+    return true
+end
+
+
+function toCordD(d)
+    while not (fd == d) do
+        if fd > d then
+            turnLeft()
+        else
+            turnRight()
+        end
+    end
+end
+
+function toCordZ(targetZ, mode)
+    updatePos()
+    while not (targetZ == z) do
+        if targetZ > z  then
+            if mode == 'd' then
+                turtle.digUp()
+            end
+            if up() == false then
+                return false
+            end
+        else
+            if mode == 'd' then
+                turtle.digDown()
+            end
+            if down() == false then
+                return false
+            end
+        end
+        updatePos()
+    end
+    return true
+end
+
+function toCordX(targetX, mode)
+    updatePos()
+    if not (targetX == x) then
+        if targetX > x then
+            faceDirection(1)
+        else
+            faceDirection(3)
+        end
+        while not (targetX == x) do
+            if mode == 'd' then
+                turtle.dig()
+            end
+            if forward() == false then
+                return false
+            end
+            updatePos()
+        end
+    end
+    return true
+end
+
+function toCordY(targetY, mode)
+    updatePos()
+    if not (targetY == y) then
+        if targetY > y then
+            faceDirection(2)
+        else
+            faceDirection(0)
+        end
+        while not (targetY == y) do
+            if mode == 'd' then
+                turtle.dig()
+            end
             if forward() == false then
                 return false
             end
