@@ -1,6 +1,6 @@
 os.loadAPI('apis/move')
 
-local args = (...)
+local args = {...}
 local tX
 local tY
 local tZ
