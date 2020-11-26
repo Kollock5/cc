@@ -24,8 +24,8 @@ end
 function updatePos()
     local newX, newZ, newY = gps.locate(5)
     x = newX
-    z = newY
-    y = newZ
+    z = newZ
+    y = newY
 end
 
 function checkFD()
