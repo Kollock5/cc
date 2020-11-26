@@ -44,10 +44,10 @@ function checkFD()
         if oldX == (x + 1) then 
             facingDirection = 3
         end
-        if oldY == (y - 1) then
+        if oldY == (y + 1) then
             facingDirection = 2
         end
-        if oldX == (x + 1) then
+        if oldX == (x - 1) then
             facingDirection = 1
         end
         if oldY == (y - 1) then
