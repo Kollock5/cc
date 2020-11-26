@@ -1,5 +1,11 @@
 local facingDirection = 0
-local x, y, z = gps.locate(5)
+local x, z, y = gps.locate(5)
+
+local homeX = 0
+local homeY = 0
+local homeZ = 0
+local homeFd = 0
+
 debug = false
 
 function getX()
@@ -60,6 +66,28 @@ function init()
     file = fs.open('data/gps/save', 'r')
     facingDirection = file.readLine() + 0
     file.close()
+
+    if not fs.exists('data/gps/home') then
+        setHome()
+    end
+    file = fs.open('data/gps/home', 'r')
+    homeFd = file.readLine() + 0
+    homeX = file.readLine() + 0
+    homeY = file.readLine() + 0
+    homeZ = file.readLine() + 0
+    file.close()
+end
+
+function setHome()
+    file = fs.open('data/gps/home', 'w')
+    file.writeLine(facingDirection)
+    file.writeLine(x)
+    file.writeLine(y)
+    file.writeLine(z)
+    file.close()
+    if debug then
+        doDebug()
+    end
 end
 
 function reset()
@@ -115,6 +143,10 @@ function turnRight()
 end
 
 function faceDirection(d)
+    local targetD = d + homeFd
+    if targetD >= 4 then
+        targetD = targetD - 4
+    end
     while not (facingDirection == d) do
         if facingDirection > d then
             turnLeft()
@@ -126,8 +158,8 @@ end
 
 function toZ(targetZ)
     updatePos()
-    while not (targetZ == z) do
-        if targetZ > z then
+    while not (targetZ == (z - homeZ)) do
+        if targetZ > (z - homeZ) then
             if up() == false then
                 return false
             end
@@ -143,13 +175,13 @@ end
 
 function toX(targetX)
     updatePos()
-    if not (targetX == x) then
-        if targetX > x + 0 then
+    if not (targetX == (x - homeX)) then
+        if targetX > (x - homeX) then
             faceDirection(0)
         else
             faceDirection(2)
         end
-        while not (targetX == x) do
+        while not (targetX == (x - homeX)) do
             if forward() == false then
                 return false
             end
@@ -161,13 +193,13 @@ end
 
 function toY(targetY)
     updatePos()
-    if not (targetY == y) then
-        if targetY > y  + 0 then
+    if not (targetY == (y - homeY)) then
+        if targetY > (y - homeY) then
             faceDirection(1)
         else
             faceDirection(3)
         end
-        while not (targetY == y) do
+        while not (targetY == (y - homeY)) do
             if forward() == false then
                 return false
             end
