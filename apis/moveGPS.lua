@@ -34,14 +34,15 @@ function checkFD()
     oldX = x
     oldY = y
     if turtle.forward() then
+        print(gps.locate(5))
         updatePos()
-        if oldX > x then
+        if oldX == x + 1 then 
             facingDirection = 0
-        elseif oldY < y then
+        elseif oldY == y - 1 then
             facingDirection = 1
-        elseif oldX < x then
+        elseif oldX == x + 1 then
             facingDirection = 2
-        elseif oldY > y then
+        elseif oldY == y - 1 then
             facingDirection = 4
         end
         turtle.back()
