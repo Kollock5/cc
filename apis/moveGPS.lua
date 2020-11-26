@@ -186,8 +186,8 @@ function toX(targetX)
             if forward() == false then
                 return false
             end
+            updatePos()
         end
-        updatePos()
     end
     return true
 end
@@ -204,9 +204,9 @@ function toY(targetY)
             if forward() == false then
                 return false
             end
+            updatePos()
         end
     end
-    updatePos()
     return true
 end
 
