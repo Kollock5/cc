@@ -1,4 +1,4 @@
-local facingDirection = 0
+local fd = 0
 local x = 0
 local y = 0
 local z = 0
@@ -17,7 +17,7 @@ function getY()
 end
 
 function getFd()
-    return facingDirection
+    return fd
 end
 
 function init()
@@ -25,7 +25,7 @@ function init()
         reset()
     end
     file = fs.open('saves/localPos/save', 'r')
-    facingDirection = file.readLine() + 0
+    fd = file.readLine() + 0
     x = file.readLine() + 0
     y = file.readLine() + 0
     z = file.readLine() + 0
@@ -43,7 +43,7 @@ end
  
 local function save()
     file = fs.open('saves/localPos/save', 'w')
-    file.writeLine(facingDirection)
+    file.writeLine(fd)
     file.writeLine(x)
     file.writeLine(y)
     file.writeLine(z)
@@ -75,19 +75,19 @@ end
  
 function forward()
     if turtle.forward() then
-        if facingDirection + 0 == 0 then
+        if fd + 0 == 0 then
             x = x + 1
             save()
             return x
-        elseif facingDirection + 0 == 1 then
+        elseif fd + 0 == 1 then
             y = y + 1
             save()
             return y
-        elseif facingDirection + 0 == 2 then
+        elseif fd + 0 == 2 then
             x = x - 1
             save()
             return x
-        elseif facingDirection + 0 == 3 then
+        elseif fd + 0 == 3 then
             y = y - 1
             save()
             return y
@@ -99,19 +99,19 @@ end
  
 function back()
     if turtle.back() then
-        if facingDirection + 0 == 0 then
+        if fd + 0 == 0 then
             x = x - 1
             save()
             return x
-        elseif facingDirection + 0 == 1 then
+        elseif fd + 0 == 1 then
             y = y - 1
             save()
             return y
-        elseif facingDirection + 0 == 2 then
+        elseif fd + 0 == 2 then
             x = x + 1
             save()
             return x
-        elseif facingDirection + 0 == 3 then
+        elseif fd + 0 == 3 then
             y = y + 1
             save()
             return y
@@ -124,27 +124,27 @@ end
  
 function turnLeft()
     turtle.turnLeft()
-    facingDirection = facingDirection - 1
-    if facingDirection < 0 then
-        facingDirection = 3
+    fd = fd - 1
+    if fd < 0 then
+        fd = 3
     end
     save()
-    return facingDirection
+    return fd
 end
  
 function turnRight()
     turtle.turnRight()
-    facingDirection = facingDirection + 1
-    if facingDirection == 4 then
-        facingDirection = 0
+    fd = fd + 1
+    if fd == 4 then
+        fd = 0
     end
     save()
-    return facingDirection
+    return fd
 end
 
 function faceDirection(d)
-    while not (facingDirection == d) do
-        if facingDirection > d then
+    while not (fd == d) do
+        if fd > d then
             turnLeft()
         else
             turnRight()
@@ -201,5 +201,5 @@ function toY(targetY)
 end
 
 function doDebug()
-    print('d: ' .. facingDirection .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
+    print('d: ' .. fd .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
 end

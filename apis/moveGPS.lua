@@ -1,4 +1,4 @@
-local facingDirection = 0
+local fd = 0
 local x, z, y = gps.locate(5)
 
 local homeX = 0
@@ -24,7 +24,7 @@ function getY()
 end
 
 function getFd()
-    return facingDirection
+    return fd
 end
 
 function updatePos()
@@ -43,16 +43,16 @@ function checkFD()
     if turtle.forward() then
         updatePos()
         if oldX == (x + 1) then 
-            facingDirection = 3
+            fd = 3
         end
         if oldY == (y + 1) then
-            facingDirection = 0
+            fd = 0
         end
         if oldX == (x - 1) then
-            facingDirection = 1
+            fd = 1
         end
         if oldY == (y - 1) then
-            facingDirection = 2
+            fd = 2
         end
         turtle.back()
     else
@@ -65,7 +65,7 @@ function init()
         reset()
     end
     file = fs.open('data/gps/save', 'r')
-    facingDirection = file.readLine() + 0
+    fd = file.readLine() + 0
     file.close()
 
     if not fs.exists('data/gps/home') then
@@ -81,7 +81,7 @@ end
 
 function setHome()
     file = fs.open('data/gps/home', 'w')
-    file.writeLine(facingDirection)
+    file.writeLine(fd)
     file.writeLine(x)
     file.writeLine(y)
     file.writeLine(z)
@@ -94,13 +94,13 @@ end
 function reset()
     checkFD()
     file = fs.open('data/gps/save', 'w')
-    file.writeLine(facingDirection)
+    file.writeLine(fd)
     file.close()
 end
  
 local function save()
     file = fs.open('data/gps/save', 'w')
-    file.writeLine(facingDirection)
+    file.writeLine(fd)
     file.close()
     if debug then
         doDebug()
@@ -125,22 +125,22 @@ end
  
 function turnLeft()
     turtle.turnLeft()
-    facingDirection = facingDirection - 1
-    if facingDirection < 0 then
-        facingDirection = 3
+    fd = fd - 1
+    if fd < 0 then
+        fd = 3
     end
     save()
-    return facingDirection
+    return fd
 end
  
 function turnRight()
     turtle.turnRight()
-    facingDirection = facingDirection + 1
-    if facingDirection == 4 then
-        facingDirection = 0
+    fd = fd + 1
+    if fd == 4 then
+        fd = 0
     end
     save()
-    return facingDirection
+    return fd
 end
 
 function faceDirection(d)
@@ -148,8 +148,8 @@ function faceDirection(d)
     if targetD >= 4 then
         targetD = targetD - 4
     end
-    while not (facingDirection == d) do
-        if facingDirection > d then
+    while not (fd == d) do
+        if fd > d then
             turnLeft()
         else
             turnRight()
@@ -178,9 +178,9 @@ function toX(targetX)
     updatePos()
     if not (targetX == (x - homeX)) then
         if targetX > (x - homeX) then
-            faceDirection(3)
-        else
             faceDirection(1)
+        else
+            faceDirection(3)
         end
         while not (targetX == (x - homeX)) do
             if forward() == false then
@@ -212,8 +212,8 @@ end
 
 function doDebug()
     if debug then
-        print('d: ' .. facingDirection .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
-        local targetD = faceDirection - homeFd
+        print('d: ' .. fd .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
+        local targetD = fd - homeFd
         if targetD <= 0 then
             targetD = targetD + 4
         end
