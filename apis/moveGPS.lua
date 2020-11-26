@@ -95,8 +95,8 @@ function reset()
     checkFD()
     file = fs.open('data/gps/save', 'w')
     file.writeLine(fd)
-    setHome()
     file.close()
+    setHome()
 end
  
 local function save()
