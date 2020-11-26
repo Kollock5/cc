@@ -33,6 +33,7 @@ function checkFD()
     updatePos()
     oldX = x
     oldY = y
+    turtle.dig()
     if turtle.forward() then
         print(gps.locate(5))
         updatePos()
