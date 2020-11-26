@@ -22,36 +22,30 @@ function getFd()
 end
 
 function updatePos()
-    local newX, newY, newZ = gps.locate(5)
+    local newX, newZ, newY = gps.locate(5)
     x = newX
-    y = newY
-    z = newZ
+    z = newY
+    y = newZ
 end
 
 function checkFD()
-    print(gps.locate(5))
     updatePos()
     oldX = x
     oldY = y
     turtle.dig()
     if turtle.forward() then
-        print(gps.locate(5))
         updatePos()
-        print(oldX)
-        print(x)
-        print(oldX == x + 1)
-
         if oldX == (x + 1) then 
             facingDirection = 3
         end
         if oldY == (y + 1) then
-            facingDirection = 2
+            facingDirection = 0
         end
         if oldX == (x - 1) then
             facingDirection = 1
         end
         if oldY == (y - 1) then
-            facingDirection = 0
+            facingDirection = 2
         end
         turtle.back()
     else
