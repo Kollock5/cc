@@ -64,19 +64,12 @@ end
 
 
 
-if args[1] == nil then
-    if fs.exists('data/gps/save') then
-        loadTarget() 
-    end
-elseif args[5] == nil then
-    print('rMine X Y Z D L')
-else
+
     tX = args[1]
     tY = args[2]
     tZ = args[3]
     tD = args[4]
     tL = args[5]
-end
 move.init()
 moveToTarge()
 moveHome()
