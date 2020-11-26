@@ -8,7 +8,7 @@ local tD
 local tL
 
 function setTarget()
-    file = fs.open('data/rMine/target', 'w')
+    local file = fs.open('data/rMine/target', 'w')
     file.writeLine(tX)
     file.writeLine(tY)
     file.writeLine(tZ)
@@ -21,7 +21,7 @@ function setTarget()
 end
 
 function loadTarget()
-    file = fs.open('data/rMine/target', 'r')
+    local file = fs.open('data/rMine/target', 'r')
     tX = file.readLine() + 0
     tY = file.readLine() + 0
     tZ = file.readLine() + 0

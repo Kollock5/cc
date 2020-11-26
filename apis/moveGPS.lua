@@ -64,14 +64,14 @@ function init()
     if not fs.exists('data/gps/save') then
         reset()
     end
-    file = fs.open('data/gps/save', 'r')
+    local file = fs.open('data/gps/save', 'r')
     fd = file.readLine() + 0
     file.close()
 
     if not fs.exists('data/gps/home') then
         setHome()
     end
-    file = fs.open('data/gps/home', 'r')
+    local file = fs.open('data/gps/home', 'r')
     homeFd = file.readLine() + 0
     homeX = file.readLine() + 0
     homeY = file.readLine() + 0
@@ -80,7 +80,7 @@ function init()
 end
 
 function setHome()
-    file = fs.open('data/gps/home', 'w')
+    local file = fs.open('data/gps/home', 'w')
     file.writeLine(fd)
     file.writeLine(x)
     file.writeLine(y)
@@ -93,14 +93,14 @@ end
 
 function reset()
     checkFD()
-    file = fs.open('data/gps/save', 'w')
+    local file = fs.open('data/gps/save', 'w')
     file.writeLine(fd)
     file.close()
     setHome()
 end
  
 local function save()
-    file = fs.open('data/gps/save', 'w')
+    local file = fs.open('data/gps/save', 'w')
     file.writeLine(fd)
     file.close()
     if debug then
