@@ -87,7 +87,7 @@ function excavate()
             if not (j == tL) then
                 if j % 2 == 0 then
                     move.turnLeft()
-                    if tmineBlock() == false then
+                    if mineBlock() == false then
                         return true
                     end
                     move.forward()
