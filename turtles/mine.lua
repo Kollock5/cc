@@ -75,7 +75,7 @@ function excavate()
                 end
                 move.forward()
             end
-            if not j == tL then
+            if not (j == tL) then
                 if j % 2 == 0 then
                     move.turnLeft()
                     if turtle.dig() == false then
