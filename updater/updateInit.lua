@@ -1,4 +1,4 @@
-
+--wget https://raw.githubusercontent.com/Kollock5/cc/updater/updateInit.lua up/init
 
 function updateMove()
     file = fs.open('up/upMove', 'w')
