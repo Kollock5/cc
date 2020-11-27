@@ -1,7 +1,16 @@
+
+
 function updateMove()
     file = fs.open('up/upMove', 'w')
     file.writeLine('shell.run("rm apis/move")')
     file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/apis/move.lua apis/move")')
+    file.close()
+end
+
+function updateGPS()
+    file = fs.open('up/upMove', 'w')
+    file.writeLine('shell.run("rm apis/move")')
+    file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/apis/moveGPS.lua apis/move")')
     file.close()
 end
 
