@@ -101,10 +101,6 @@ function excavate()
                     move.turnRight()
                 end
             else
-                if mineBlock() == false then
-                    return true
-                end
-                move.forward()
                 while turtle.detectDown() do
                     if turtle.digDown() == false then
                         return false
