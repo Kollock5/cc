@@ -1,4 +1,4 @@
---wget https://raw.githubusercontent.com/Kollock5/cc/updater/updateInit.lua up/init
+--wget https://raw.githubusercontent.com/Kollock5/cc/main/updater/updateInit.lua up/init
 
 function updateMove()
     file = fs.open('up/upMove', 'w')
@@ -8,7 +8,7 @@ function updateMove()
 end
 
 function updateGPS()
-    file = fs.open('up/upMove', 'w')
+    file = fs.open('up/upGPS', 'w')
     file.writeLine('shell.run("rm apis/move")')
     file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/apis/moveGPS.lua apis/move")')
     file.close()
@@ -39,3 +39,4 @@ updateMove()
 updateTree()
 updateFarm()
 updateMine()
+updateGPS()
