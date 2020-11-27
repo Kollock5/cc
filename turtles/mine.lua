@@ -62,6 +62,29 @@ function moveHome()
     move.faceDirection(0)
 end
 
+function excavate()
+    local turn
+    for j = 1, tL do
+        for k = 1, tL - 1 do
+            if not turtle.getItemDetail(16) == nil then
+                clearInventory()
+            end
+            turtle.dig()
+            move.forward()
+        end
+        if j % 2 == 0 then
+            move.turnLeft()
+            turtle.dig()
+            move.forward()
+            move.turnLeft()
+        else
+            move.turnRight()
+            turtle.dig()
+            move.forward()
+            move.turnRight()
+        end
+    end
+end
 
 
 
@@ -71,5 +94,6 @@ end
     tD = (args[4] + 0)
     tL = (args[5] + 0)
 move.init()
-moveToTarge()
-moveHome()
+--moveToTarge()
+--moveHome()
+excavate()

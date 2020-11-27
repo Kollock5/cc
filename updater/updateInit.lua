@@ -22,7 +22,7 @@ end
 function updateMine()
     file = fs.open('up/upMine', 'w')
     file.writeLine('shell.run("rm turtles/mine")')
-    file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/turtles/mine.lua turtles/farm")')
+    file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/turtles/mine.lua turtles/mine")')
     file.close()
 end
 
