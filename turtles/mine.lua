@@ -62,6 +62,15 @@ function moveHome()
     move.faceDirection(0)
 end
 
+function mineBlock()
+    while turtle.detect() do
+        if turtle.dig() == false then
+            return false
+        end
+    end
+    return true
+end
+
 function excavate()
     local turn
     while move.getZ()  > 1 do
@@ -70,7 +79,7 @@ function excavate()
                 if not turtle.getItemDetail(16) == nil then
                     clearInventory()
                 end
-                if turtle.dig() == false then
+                if mineBlock() == false then
                     return true
                 end
                 move.forward()
@@ -78,14 +87,14 @@ function excavate()
             if not (j == tL) then
                 if j % 2 == 0 then
                     move.turnLeft()
-                    if turtle.dig() == false then
+                    if tmineBlock() == false then
                         return true
                     end
                     move.forward()
                     move.turnLeft()
                 else
                     move.turnRight()
-                    if turtle.dig() == false then
+                    if mineBlock() == false then
                         return true
                     end
                     move.forward()
@@ -96,8 +105,10 @@ function excavate()
                     return true
                 end
                 move.forward()
-                if turtle.digDown() == false then
-                    return true
+                while turtle.detectDown() do
+                    if turtle.digDown() == false then
+                        return false
+                    end
                 end
                 move.down()
                 if j % 2 == 0 then
