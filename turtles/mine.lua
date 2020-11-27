@@ -111,7 +111,7 @@ function excavate()
                     end
                 end
                 move.down()
-                if not turn then
+                if turn then
                     move.turnRight()
                 else
                     move.turnLeft()
