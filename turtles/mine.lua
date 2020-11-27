@@ -64,25 +64,50 @@ end
 
 function excavate()
     local turn
-    for j = 1, tL do
-        for k = 1, tL - 1 do
-            if not turtle.getItemDetail(16) == nil then
-                clearInventory()
+    while move.getZ  > 1 do
+        for j = 1, tL do
+            for k = 1, tL - 1 do
+                if not turtle.getItemDetail(16) == nil then
+                    clearInventory()
+                end
+                if turtle.dig() == false then
+                    return true
+                end
+                move.forward()
             end
-            turtle.dig()
-            move.forward()
+            if not j == tL then
+                if j % 2 == 0 then
+                    move.turnLeft()
+                    if turtle.dig() == false then
+                        return true
+                    end
+                    move.forward()
+                    move.turnLeft()
+                else
+                    move.turnRight()
+                    if turtle.dig() == false then
+                        return true
+                    end
+                    move.forward()
+                    move.turnRight()
+                end
+            else
+                if turtle.dig() == false then
+                    return true
+                end
+                move.forward()
+                if turtle.digDown() == false then
+                    return true
+                end
+                move.down()
+                if j % 2 == 0 then
+                    move.turnRight()
+                else
+                    move.turnLeft()
+                end
+            end
         end
-        if j % 2 == 0 then
-            move.turnLeft()
-            turtle.dig()
-            move.forward()
-            move.turnLeft()
-        else
-            move.turnRight()
-            turtle.dig()
-            move.forward()
-            move.turnRight()
-        end
+
     end
 end
 
