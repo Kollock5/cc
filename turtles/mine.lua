@@ -119,14 +119,12 @@ function excavate()
     end
 end
 
-
-
     tX = (args[1] + 0)
     tY = (args[2] + 0)
     tZ = (args[3] + 0)
     tD = (args[4] + 0)
     tL = (args[5] + 0)
 move.init()
---moveToTarge()
---moveHome()
+moveToTarge()
 excavate()
+moveHome()
