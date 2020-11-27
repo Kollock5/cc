@@ -72,7 +72,7 @@ function mineBlock()
 end
 
 function excavate()
-    local turn
+    local turn = false
     while move.getZ()  > 1 do
         for j = 1, tL do
             for k = 1, tL - 1 do
@@ -85,7 +85,7 @@ function excavate()
                 move.forward()
             end
             if not (j == tL) then
-                if j % 2 == 0 then
+                if turn then
                     move.turnLeft()
                     if mineBlock() == false then
                         return true
@@ -101,7 +101,7 @@ function excavate()
                     move.turnRight()
                 end
             else
-                if turtle.dig() == false then
+                if mineBlock() == false then
                     return true
                 end
                 move.forward()
@@ -111,12 +111,13 @@ function excavate()
                     end
                 end
                 move.down()
-                if j % 2 == 0 then
+                if not turn then
                     move.turnRight()
                 else
                     move.turnLeft()
                 end
             end
+            turn = not turn
         end
 
     end
