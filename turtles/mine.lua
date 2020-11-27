@@ -76,7 +76,7 @@ function excavate()
     while move.getZ()  > 1 do
         for j = 1, tL do
             for k = 1, tL - 1 do
-                if not turtle.getItemDetail(16) == nil then
+                if not (turtle.getItemDetail(16) == nil) then
                     clearInventory()
                 end
                 if mineBlock() == false then
