@@ -1,6 +1,36 @@
 os.loadAPI('apis/move')
+
 local args = {...}
-local tL = 8
+local tX
+local tY
+local tZ
+local tD
+local tL
+
+function setTarget()
+    local file = fs.open('data/rMine/target', 'w')
+    file.writeLine(tX)
+    file.writeLine(tY)
+    file.writeLine(tZ)
+    file.writeLine(tD)
+    file.writeLine(tL)
+    file.close()
+    if debug then
+        print('target set')
+    end
+end
+
+function loadTarget()
+    local file = fs.open('data/rMine/target', 'r')
+    tX = file.readLine() + 0
+    tY = file.readLine() + 0
+    tZ = file.readLine() + 0
+    tD = file.readLine() + 0
+    tL = file.readLine() + 0
+    file.close()
+end
+
+
 
 function clearInventory()
     turtle.digUp()
@@ -14,6 +44,22 @@ function clearInventory()
     end
     turtle.select(1)
     turtle.digUp()
+end
+
+function moveToTarge()
+    move.toCordZ(128, 'd')
+    move.toCordX(tX, 'd')
+    move.toCordY(tY, 'd')
+    move.toCordZ(tZ, 'd')
+    move.toCordD(tD)
+end
+
+function moveHome()
+    move.toCordZ(128, 'd')
+    move.toX(0, 'd')
+    move.toY(0, 'd')
+    move.toZ(0, 'd')
+    move.faceDirection(0)
 end
 
 function mineBlock()
@@ -73,6 +119,18 @@ function excavate()
     end
 end
 
-tX = (args[1] + 0)
+    tX = (args[1] + 0)
+    tY = (args[2] + 0)
+    tZ = (args[3] + 0)
+    tD = (args[4] + 0)
+    tL = (args[5] + 0)
 move.init()
+print("the Turtle will move the following distance:")
+print('x: ' .. math.abs(tX - move.getX()))
+print('y: ' .. math.abs(tY - move.getY()))
+print('z: ' .. math.abs(tZ - move.getZ()))
+sleep(10)
+
+moveToTarge()
 excavate()
+moveHome()
