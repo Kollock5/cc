@@ -126,9 +126,9 @@ end
     tL = (args[5] + 0)
 move.init()
 print("the Turtle will move the following distance:")
-print('x: ' .. math.aps(tX - move.getX()))
-print('y: ' .. math.aps(tY - move.getY()))
-print('z: ' .. math.aps(tZ - move.getZ()))
+print('x: ' .. math.abs(tX - move.getX()))
+print('y: ' .. math.abs(tY - move.getY()))
+print('z: ' .. math.abs(tZ - move.getZ()))
 sleep(10)
 
 moveToTarge()
