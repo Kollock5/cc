@@ -73,6 +73,6 @@ function excavate()
     end
 end
 
-tX = (args[1] + 0)
+tL = (args[1] + 0)
 move.init()
 excavate()
