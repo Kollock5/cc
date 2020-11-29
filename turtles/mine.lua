@@ -125,6 +125,12 @@ end
     tD = (args[4] + 0)
     tL = (args[5] + 0)
 move.init()
+print("the Turtle will move the following distance:")
+print('x: ' .. math.aps(tX - move.getX))
+print('y: ' .. math.aps(tY - move.getY))
+print('z: ' .. math.aps(tZ - move.getZ))
+sleep(10)
+
 moveToTarge()
 excavate()
 moveHome()
