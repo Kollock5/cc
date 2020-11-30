@@ -1,6 +1,7 @@
 os.loadAPI('apis/move')
 local args = {...}
 local tL = 8
+move.reset()
 
 function clearInventory()
     turtle.digUp()
@@ -23,6 +24,13 @@ function mineBlock()
         end
     end
     return true
+end
+
+function moveHome()
+    move.toX(0, 'd')
+    move.toY(0, 'd')
+    move.toZ(0, 'd')
+    move.faceDirection(0)
 end
 
 function excavate()
@@ -75,4 +83,6 @@ end
 
 tL = (args[1] + 0)
 move.init()
+move.reset()
 excavate()
+moveHome()

@@ -92,10 +92,12 @@ function setHome()
 end
 
 function reset()
+    updatePos()
     checkFD()
     local file = fs.open('data/gps/save', 'w')
     file.writeLine(fd)
     file.close()
+    sleep(1)
     setHome()
 end
  
