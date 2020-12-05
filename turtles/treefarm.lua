@@ -122,7 +122,7 @@ local function main()
         returnHome()
         readyUp()
         local i = 0
-        while i < 100 do
+        while i < sleeptimer do
             term.clear()
             print('Wait time remaining: ' .. i .. '/' .. sleeptimer)
             i = i + 1
