@@ -1,4 +1,4 @@
-os.loadAPI('apis/move')
+os.loadAPI('api/move')
 
 local args = {...}
 local tX

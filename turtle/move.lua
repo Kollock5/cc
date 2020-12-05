@@ -1,4 +1,4 @@
-os.loadAPI('apis/move')
+os.loadAPI('api/move')
 local sleeptimer = 100
 local args = {...}
 local tX

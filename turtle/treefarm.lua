@@ -1,4 +1,4 @@
-os.loadAPI('apis/move')
+os.loadAPI('api/move')
 
 local row = 5
 local column = 5
