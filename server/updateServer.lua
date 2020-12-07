@@ -14,7 +14,7 @@ local function checkGitForUpdate()
 end
 
 local function checkVersion(message)
-    print(message.file)
+    print('Updating ' .. message.file)
     if fs.exists(message.file) then
         local file = fs.open(message.file, 'r')
         sVersion = (string.sub(file.readLine(), 17)) + 0
@@ -37,11 +37,19 @@ modem.open(1213)
 checkGitForUpdate()
 
 while true do
-    local event, mSide, sCh, rCh, message, sD = os.pullEvent('modem_message')
-    if checkVersion(message) then
-        sendUpdate(message, modem, rCh)
-    else
-        local msg = {update = false}
-        modem.transmit(rCh, 0, msg)
+    local event, mSide, sCh, rCh, message, sD = os.pullEvent()
+    if event == 'modem_message' then
+        if checkVersion(message) then
+            sendUpdate(message, modem, rCh)
+        else
+            local msg = {update = false}
+            modem.transmit(rCh, 0, msg)
+        end
+    end
+    if event == 'key' and mSide == 85 then
+        print('Update triggert')
+        checkGitForUpdate()
+        term.clear()
+        term.setCursorPos(1,1)
     end
 end

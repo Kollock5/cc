@@ -4,6 +4,7 @@ api/update.lua
 pc/DiselControl.lua
 pc/test.lua
 pocket/gps.lua
+pocket/zollstock.lua
 server/updateServer.lua
 turtle/farm.lua
 turtle/mine.lua
