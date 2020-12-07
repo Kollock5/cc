@@ -2,6 +2,7 @@ api/move.lua
 api/moveGPS.lua
 api/update.lua
 pc/DiselControl.lus
+pc/test.lua
 pocket/gps.lua
 server/updateServer.lua
 turtle/farm.lua
