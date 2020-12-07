@@ -1,4 +1,4 @@
-local version = 1
+local version = 2
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
     update.checkForUpdate(version, 'turtle/buildDisel.lua')
@@ -117,40 +117,40 @@ local function build()
     turtle.down()
 end
 
-for i = 1, 16, 1  do
+for i = 1, 16  do
      local item = turtle.getItemDetail(i)
     if item == nil then
         print('no item')
-    elseif item[2] == 'immersiveengineering:radiator' then
-        if item[1] >= 9 then
+    elseif item.name == 'immersiveengineering:radiator' then
+        if item.count >= 9 then
             radiator = i
         end
-        print('not enough ' .. item[2])
-    elseif item[2] == 'immersiveengineering:steel_scaffolding_standard' then
-        if item[1] >= 6 then
+        print('not enough ' .. item.name)
+    elseif item.name == 'immersiveengineering:steel_scaffolding_standard' then
+        if item.count >= 6 then
             scaffolding = i
         end
-        print('not enough ' .. item[2])
-    elseif item[2] == 'immersiveengineering:heavy_engineering' then
-        if item[1] >= 13 then
+        print('not enough ' .. item.name)
+    elseif item.name == 'immersiveengineering:heavy_engineering' then
+        if item.count >= 13 then
             heavy = i
         end
-        print('not enough ' .. item[2])
-    elseif item[2] == 'immersiveengineering:fluid_pipe' then
-        if item[1] >= 5 then
+        print('not enough ' .. item.name)
+    elseif item.name == 'immersiveengineering:fluid_pipe' then
+        if item.count >= 5 then
             pipe = i
         end
-        print('not enough ' .. item[2])
-    elseif item[2] == 'immersiveengineering:rs_engineering' then
-        if item[1] >= 1 then
+        print('not enough ' .. item.name)
+    elseif item.name == 'immersiveengineering:rs_engineering' then
+        if item.count >= 1 then
             redstone = i
         end
-        print('not enough ' .. item[2])
-    elseif item[2] == 'immersiveengineering:generator' then
-        if item[1] >= 4 then
+        print('not enough ' .. item.name)
+    elseif item.name == 'immersiveengineering:generator' then
+        if item.count >= 4 then
             engine = i
         end
-        print('not enough ' .. item[2])
+        print('not enough ' .. item.name)
     end
 end
 
