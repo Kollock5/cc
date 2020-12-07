@@ -115,7 +115,6 @@ local function startUp()
 end
 
 local function main()
-    move.init()
     startUp()
     while true do
         farmTrees()

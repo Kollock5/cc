@@ -203,3 +203,5 @@ end
 function doDebug()
     print('d: ' .. fd .. ', x: ' .. x .. ', y: ' .. y .. ', z: ' .. z)
 end
+
+init()

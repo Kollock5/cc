@@ -124,7 +124,7 @@ end
     tZ = (args[3] + 0)
     tD = (args[4] + 0)
     tL = (args[5] + 0)
-move.init()
+
 print("the Turtle will move the following distance:")
 print('x: ' .. math.abs(tX - move.getX()))
 print('y: ' .. math.abs(tY - move.getY()))

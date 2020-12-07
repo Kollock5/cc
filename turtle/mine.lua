@@ -82,7 +82,6 @@ function excavate()
 end
 
 tL = (args[1] + 0)
-move.init()
 move.reset()
 excavate()
 moveHome()

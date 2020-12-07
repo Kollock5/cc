@@ -29,14 +29,13 @@ end
     tY = (args[2] + 0)
     tZ = (args[3] + 0)
     tD = (args[4] + 0)
-move.init()
+
 print("the Turtle will move the following distance:")
 print('x: ' .. math.abs(tX - move.getX()))
 print('y: ' .. math.abs(tY - move.getY()))
 print('z: ' .. math.abs(tZ - move.getZ()))
 sleep(10)
 
-move.init()
 move.reset()
 moveToTarge()
     while i < sleeptimer do

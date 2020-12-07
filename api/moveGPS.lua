@@ -1,3 +1,5 @@
+local version = 1
+
 local fd = 0
 local x, z, y = gps.locate(5)
 
@@ -300,3 +302,5 @@ function doDebug()
 
     end
 end
+
+init()
