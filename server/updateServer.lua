@@ -1,4 +1,16 @@
 local modem = peripheral.wrap('top')
+local git = 'https://raw.githubusercontent.com/Kollock5/cc/main/'
+
+local function checkGitForUpdate()
+    shell.run('wget '.. git ..'files.txt data/updateServer/files')
+    local file = fs.open('data/updateServer/files', 'r')
+    local nextFile = file.readLine()
+    while not (nextFile == nil) do
+        shell.run('rm ' .. nextFile)
+        shell.run('wget '.. git .. nextFile .. ' ' .. nextFile)
+        nextFile = file.readLine()
+    end
+end
 
 local function checkVersion(message)
     print(message.file)
@@ -20,6 +32,8 @@ local function sendUpdate(message, modem, rCh)
 end
 
 modem.open(1213)
+
+checkGitForUpdate()
 
 while true do
     local event, mSide, sCh, rCh, message, sD = os.pullEvent('modem_message')
