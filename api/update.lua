@@ -1,6 +1,6 @@
+local myVersion = 1
 
-
-function checkForUpdate(version, path, modem)
+function checkForUpdate(version, path)
     data = {file = path, version = version}
     modem.transmit(1213, 1214, data)
     modem.open(1214)
@@ -14,3 +14,6 @@ function checkForUpdate(version, path, modem)
     end
     return false
 end
+
+local modem = peripheral.find('modem')
+checkForUpdate(myVersion, 'api/update.lua')

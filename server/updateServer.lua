@@ -16,7 +16,7 @@ local function checkVersion(message)
     print(message.file)
     if fs.exists(message.file) then
         local file = fs.open(message.file, 'r')
-        sVersion = (string.sub(file.readLine(), 11)) + 0
+        sVersion = (string.sub(file.readLine(), 17)) + 0
         file.close()
         if not (sVersion == (message.version + 0)) then
             return true
@@ -27,7 +27,7 @@ end
  
 local function sendUpdate(message, modem, rCh)
     local file = fs.open(message.file, 'r')
-    local msg = {update = true, data = file.readAll()} 
+    local msg = {update = true, data = file.readAll()}
     modem.transmit(rCh, 0, msg) 
 end
 
