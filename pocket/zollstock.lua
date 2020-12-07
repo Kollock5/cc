@@ -1,10 +1,10 @@
-local version = 2
+local version = 3
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
     update.checkForUpdate(version, 'pocket/zollstock.lua')
 end
 
-local x1, y1, z1
+local x1, y1, z1 = gps.locate(5)
 
 function draw()
     local x, y, z = gps.locate(5)
