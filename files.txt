@@ -1,5 +1,5 @@
-api/move.lua
-api/moveGPS.lua
+api/lokMove.lua
+api/gpsMove.lua
 api/update.lua
 pc/DiselControl.lua
 pc/test.lua

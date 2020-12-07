@@ -1,7 +1,13 @@
-os.loadAPI('api/move')
+local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'turtle/mine.lua')
+end
+
+os.loadAPI('api/gpsMove.lua')
 local args = {...}
 local tL = 8
-move.reset()
+gpsMove.reset()
 
 function clearInventory()
     turtle.digUp()
@@ -27,15 +33,15 @@ function mineBlock()
 end
 
 function moveHome()
-    move.toX(0, 'd')
-    move.toY(0, 'd')
-    move.toZ(0, 'd')
-    move.faceDirection(0)
+    gpsMove.toX(0, 'd')
+    gpsMove.toY(0, 'd')
+    gpsMove.toZ(0, 'd')
+    gpsMove.faceDirection(0)
 end
 
 function excavate()
     local turn = false
-    while move.getZ()  > 1 do
+    while gpsMove.getZ()  > 1 do
         for j = 1, tL do
             for k = 1, tL - 1 do
                 if not (turtle.getItemDetail(16) == nil) then
@@ -44,23 +50,23 @@ function excavate()
                 if mineBlock() == false then
                     return true
                 end
-                move.forward()
+                gpsMove.forward()
             end
             if not (j == tL) then
                 if turn then
-                    move.turnLeft()
+                    gpsMove.turnLeft()
                     if mineBlock() == false then
                         return true
                     end
-                    move.forward()
-                    move.turnLeft()
+                    gpsMove.forward()
+                    gpsMove.turnLeft()
                 else
-                    move.turnRight()
+                    gpsMove.turnRight()
                     if mineBlock() == false then
                         return true
                     end
-                    move.forward()
-                    move.turnRight()
+                    gpsMove.forward()
+                    gpsMove.turnRight()
                 end
             else
                 while turtle.detectDown() do
@@ -68,11 +74,11 @@ function excavate()
                         return false
                     end
                 end
-                move.down()
+                gpsMove.down()
                 if turn then
-                    move.turnRight()
+                    gpsMove.turnRight()
                 else
-                    move.turnLeft()
+                    gpsMove.turnLeft()
                 end
             end
             turn = not turn
@@ -82,6 +88,6 @@ function excavate()
 end
 
 tL = (args[1] + 0)
-move.reset()
+gpsMove.reset()
 excavate()
 moveHome()

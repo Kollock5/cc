@@ -1,4 +1,10 @@
-os.loadAPI('api/move')
+local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'turtle/move.lua')
+end
+
+os.loadAPI('api/gpsMove.lua')
 local sleeptimer = 100
 local args = {...}
 local tX
@@ -10,19 +16,19 @@ local tL
 
 
 function moveToTarge()
-    move.toCordZ(128, 'd')
-    move.toCordX(tX, 'd')
-    move.toCordY(tY, 'd')
-    move.toCordZ(tZ, 'd')
-    move.toCordD(tD)
+    gpsMove.toCordZ(128, 'd')
+    gpsMove.toCordX(tX, 'd')
+    gpsMove.toCordY(tY, 'd')
+    gpsMove.toCordZ(tZ, 'd')
+    gpsMove.toCordD(tD)
 end
 
 function moveHome()
-    move.toCordZ(128, 'd')
-    move.toX(0, 'd')
-    move.toY(0, 'd')
-    move.toZ(0, 'd')
-    move.faceDirection(0)
+    gpsMove.toCordZ(128, 'd')
+    gpsMove.toX(0, 'd')
+    gpsMove.toY(0, 'd')
+    gpsMove.toZ(0, 'd')
+    gpsMove.faceDirection(0)
 end
 
     tX = (args[1] + 0)
@@ -31,12 +37,12 @@ end
     tD = (args[4] + 0)
 
 print("the Turtle will move the following distance:")
-print('x: ' .. math.abs(tX - move.getX()))
-print('y: ' .. math.abs(tY - move.getY()))
-print('z: ' .. math.abs(tZ - move.getZ()))
+print('x: ' .. math.abs(tX - gpsMove.getX()))
+print('y: ' .. math.abs(tY - gpsMove.getY()))
+print('z: ' .. math.abs(tZ - gpsMove.getZ()))
 sleep(10)
 
-move.reset()
+gpsMove.reset()
 moveToTarge()
     while i < sleeptimer do
         term.clear()

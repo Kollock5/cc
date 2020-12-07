@@ -1,3 +1,9 @@
+local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'turtle/QuickFuel.lua')
+end
+
 while true do
     turtle.refuel(64)
     term.clear()

@@ -3,14 +3,14 @@
 function updateMove()
     file = fs.open('up/upMove', 'w')
     file.writeLine('shell.run("rm apis/move")')
-    file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/api/move.lua apis/move")')
+    file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/api/gpsMove.lua apis/move")')
     file.close()
 end
 
 function updateGPS()
     file = fs.open('up/upGPS', 'w')
     file.writeLine('shell.run("rm apis/move")')
-    file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/api/moveGPS.lua apis/move")')
+    file.writeLine('shell.run("wget https://raw.githubusercontent.com/Kollock5/cc/main/api/gpsMoveGPS.lua apis/move")')
     file.close()
 end
 

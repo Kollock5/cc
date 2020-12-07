@@ -1,4 +1,10 @@
-os.loadAPI('api/move')
+local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'turtle/farm.lua')
+end
+
+os.loadAPI('api/gpsMove.lua')
 
 local length = 8
 local width = 8
@@ -12,6 +18,6 @@ function unload()
 end
 
 function returnHome()
-    move.toX(0)
-    move.toY(0)
+    gpsMove.toX(0)
+    gpsMove.toY(0)
 end

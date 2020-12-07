@@ -1,4 +1,8 @@
 local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'api/gpsMove.lua')
+end
 
 local fd = 0
 local x, z, y = gps.locate(5)

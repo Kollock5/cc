@@ -1,3 +1,9 @@
+local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'api/lokMove.lua')
+end
+
 local fd = 0
 local x = 0
 local y = 0

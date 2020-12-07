@@ -1,3 +1,9 @@
+local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'pc/DiselControl.lua')
+end
+
 local m = peripheral.wrap('left')
 local power = false
 local r = 0

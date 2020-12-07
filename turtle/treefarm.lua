@@ -1,4 +1,10 @@
-os.loadAPI('api/move')
+local version = 1
+if fs.exists('api/update.lua') then
+    os.loadAPI('api/update.lua')
+    update.checkForUpdate(version, 'turtle/treefarm.lua')
+end
+
+os.loadAPI('api/gpsMove.lua')
 
 local row = 5
 local column = 5
@@ -6,13 +12,13 @@ local sleeptimer = 100
 
 local function cutTree()
     turtle.dig()
-    move.forward()
+    gpsMove.forward()
     turtle.digDown()
     while turtle.detectUp() do
         turtle.digUp()
-        move.up()
+        gpsMove.up()
     end
-    move.toZ(1)
+    gpsMove.toZ(1)
     turtle.placeDown()
 end
 
@@ -26,24 +32,24 @@ local function unload()
 end
 
 local function returnHome()
-    while not move.toZ(20) do
+    while not gpsMove.toZ(20) do
         turtle.digUp()
     end
-    move.toX(0)
-    move.toY(0)
-    move.toZ(0)
+    gpsMove.toX(0)
+    gpsMove.toY(0)
+    gpsMove.toZ(0)
 end
 
 local function readyUp()
-    move.faceDirection(2)
+    gpsMove.faceDirection(2)
     unload()
-    move.turnLeft()
+    gpsMove.turnLeft()
     turtle.select(1)
     turtle.suck()
     turtle.select(3)
     turtle.drop()
-    move.turnLeft()
-    move.turnLeft()
+    gpsMove.turnLeft()
+    gpsMove.turnLeft()
     turtle.select(2)
     turtle.suck()
     if turtle.getFuelLevel() < 10000 then
@@ -52,14 +58,14 @@ local function readyUp()
     end
     turtle.select(3)
     turtle.drop()
-    move.turnRight()
+    gpsMove.turnRight()
 end
 
 local function farmTrees()
     turtle.select(1)
-    move.up()
+    gpsMove.up()
     turtle.dig()
-    move.forward()
+    gpsMove.forward()
 
     local i = 0
     while i < row do
@@ -68,47 +74,47 @@ local function farmTrees()
         while j < column do
             j = j + 1
             turtle.dig()
-            move.forward()
+            gpsMove.forward()
             turtle.dig()
-            move.forward()
+            gpsMove.forward()
             if turtle.detect() then
                 cutTree()
             else 
-                move.forward()
+                gpsMove.forward()
                 turtle.placeDown()
             end
         end
         turtle.dig()
-        move.forward()
+        gpsMove.forward()
         turtle.dig()
-        move.forward()
+        gpsMove.forward()
         turtle.dig()
-        move.forward()
+        gpsMove.forward()
 
         if i % 2 == 0 then
-            move.turnLeft()
+            gpsMove.turnLeft()
             turtle.dig()
-            move.forward()
+            gpsMove.forward()
             turtle.dig()
-            move.forward()
+            gpsMove.forward()
             turtle.dig()
-            move.forward()
-            move.turnLeft()
+            gpsMove.forward()
+            gpsMove.turnLeft()
         else
-            move.turnRight()
+            gpsMove.turnRight()
             turtle.dig()
-            move.forward()
+            gpsMove.forward()
             turtle.dig()
-            move.forward()
+            gpsMove.forward()
             turtle.dig()
-            move.forward()
-            move.turnRight()
+            gpsMove.forward()
+            gpsMove.turnRight()
         end
     end
 end
 
 local function startUp()
-    if not (move.getX() == 0 and move.getY() == 0 and move.getZ() == 0 and move.getFd() == 0) then
+    if not (gpsMove.getX() == 0 and gpsMove.getY() == 0 and gpsMove.getZ() == 0 and gpsMove.getFd() == 0) then
         returnHome()
     end
     readyUp()
