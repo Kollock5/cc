@@ -6,6 +6,7 @@ pc/test.lua
 pocket/gps.lua
 pocket/zollstock.lua
 server/updateServer.lua
+turtle/buildDisel.lua
 turtle/farm.lua
 turtle/mine.lua
 turtle/move.lua
