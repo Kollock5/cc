@@ -1,4 +1,4 @@
-local myVersion = 1
+local myVesin = 1
 
 function checkForUpdate(version, path)
     data = {file = path, version = version}
