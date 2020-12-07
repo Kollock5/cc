@@ -1,4 +1,6 @@
 local version = 1
+-- wget https://raw.githubusercontent.com/Kollock5/cc/main/pc/DiselControl.lua startup.lua
+
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
     update.checkForUpdate(version, 'pc/DiselControl.lua')

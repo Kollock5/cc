@@ -1,4 +1,4 @@
-local version = 3
+local version = 4
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
     update.checkForUpdate(version, 'turtle/buildDisel.lua')
@@ -120,7 +120,6 @@ end
 for i = 1, 16  do
      local item = turtle.getItemDetail(i)
     if item == nil then
-        print('no item')
     elseif item.name == 'immersiveengineering:radiator' then
         if item.count >= 9 then
             radiator = i
