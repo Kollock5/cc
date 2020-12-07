@@ -51,5 +51,6 @@ while true do
         checkGitForUpdate()
         term.clear()
         term.setCursorPos(1,1)
+        print('Update Done')
     end
 end
