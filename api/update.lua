@@ -16,4 +16,4 @@ function checkForUpdate(version, path)
 end
 
 local modem = peripheral.find('modem')
-checkForUpdate(myVersion, 'api/update.lua')
+checkForUpdate(myVesin, 'api/update.lua')
