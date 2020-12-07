@@ -1,4 +1,4 @@
-local version = 2
+local version = 3
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
     update.checkForUpdate(version, 'turtle/buildDisel.lua')
@@ -124,33 +124,39 @@ for i = 1, 16  do
     elseif item.name == 'immersiveengineering:radiator' then
         if item.count >= 9 then
             radiator = i
+        else
+            print('not enough ' .. item.name)
         end
-        print('not enough ' .. item.name)
     elseif item.name == 'immersiveengineering:steel_scaffolding_standard' then
         if item.count >= 6 then
             scaffolding = i
+        else
+            print('not enough ' .. item.name)
         end
-        print('not enough ' .. item.name)
     elseif item.name == 'immersiveengineering:heavy_engineering' then
         if item.count >= 13 then
             heavy = i
+        else
+            print('not enough ' .. item.name)
         end
-        print('not enough ' .. item.name)
     elseif item.name == 'immersiveengineering:fluid_pipe' then
         if item.count >= 5 then
             pipe = i
+        else
+            print('not enough ' .. item.name)
         end
-        print('not enough ' .. item.name)
     elseif item.name == 'immersiveengineering:rs_engineering' then
         if item.count >= 1 then
             redstone = i
+        else
+            print('not enough ' .. item.name)
         end
-        print('not enough ' .. item.name)
     elseif item.name == 'immersiveengineering:generator' then
         if item.count >= 4 then
             engine = i
+        else
+            print('not enough ' .. item.name)
         end
-        print('not enough ' .. item.name)
     end
 end
 
