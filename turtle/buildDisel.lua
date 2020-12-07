@@ -117,10 +117,11 @@ local function build()
     turtle.down()
 end
 
-for i = 1, 16 do
-    item = turtle.getItemDetail(i)
-
-    if item[2] == 'immersiveengineering:radiator' then
+for i = 1, 16, 1  do
+     local item = turtle.getItemDetail(i)
+    if item == nil then
+        print('no item')
+    elseif item[2] == 'immersiveengineering:radiator' then
         if item[1] >= 9 then
             radiator = i
         end
