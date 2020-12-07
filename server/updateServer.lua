@@ -2,6 +2,7 @@ local modem = peripheral.wrap('top')
 local git = 'https://raw.githubusercontent.com/Kollock5/cc/main/'
 
 local function checkGitForUpdate()
+    shell.run('rm data/updateServer/files')
     shell.run('wget '.. git ..'files.txt data/updateServer/files')
     local file = fs.open('data/updateServer/files', 'r')
     local nextFile = file.readLine()
