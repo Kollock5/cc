@@ -1,6 +1,7 @@
-local myVesin = 1
+local myVesin = 2
 
 function checkForUpdate(version, path)
+    local modem = peripheral.find('modem')
     data = {file = path, version = version}
     modem.transmit(1213, 1214, data)
     modem.open(1214)
@@ -15,5 +16,5 @@ function checkForUpdate(version, path)
     return false
 end
 
-local modem = peripheral.find('modem')
+
 checkForUpdate(myVesin, 'api/update.lua')
