@@ -43,7 +43,7 @@ end
 function getTime()
     local hours = textutils.formatTime(os.time(), true)
     if #hours == 4 then
-        hours = ' ' + hours
+        hours = ' ' .. hours
     end
     return ('day: ' .. os.day() .. ' time: ' .. hours)
 end
