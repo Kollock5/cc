@@ -59,7 +59,7 @@ while true do
             end
         end
         if event == 'key' and mSide == 85 then
-
+            print('key pressed')
         end
     end
 end
