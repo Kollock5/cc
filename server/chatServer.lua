@@ -1,4 +1,4 @@
-local version = 1
+local version = 2
 
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
@@ -36,6 +36,8 @@ end
 loadData()
 modem.open(4546)
 term.setTextColor(colors.purple)
+term.clear()
+term.setCursorPos(1,1)
 print('ENDERCHAT-Server')
 term.setTextColor(colors.white)
 
@@ -48,7 +50,7 @@ while true do
             break
         end
         if event == 'modem_message' then
-            term.setTextColor(msg.userColor)
+            term.setTextColor(message.userColor)
             term.write(message.user)
             term.setTextColor(colors.white)
             print(' send ' .. message.msg .. ' at ' ..  message.time)
