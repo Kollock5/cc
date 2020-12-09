@@ -35,6 +35,9 @@ end
 
 loadData()
 modem.open(4546)
+term.setTextColor(colors.purple)
+print('ENDERCHAT-Server')
+term.setTextColor(colors.white)
 
 while true do
     local myTimer = os.startTimer(1)
@@ -45,12 +48,14 @@ while true do
             break
         end
         if event == 'modem_message' then
-            print('msg resived')
+            term.setTextColor(msg.userColor)
+            term.write(message.user)
+            term.setTextColor(colors.white)
+            print(' send ' .. message.msg .. ' at ' ..  message.time)
             msgReceived(message)
 
         end
         if event == 'key' and mSide == 85 then
-            print('Update triggert')
 
         end
     end
