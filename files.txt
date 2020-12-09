@@ -1,10 +1,12 @@
 api/lokMove.lua
 api/gpsMove.lua
 api/update.lua
+pc/chatClient.lua
 pc/DiselControl.lua
 pc/test.lua
 pocket/gps.lua
 pocket/zollstock.lua
+server/chatServer.lua
 server/updateServer.lua
 turtle/buildDisel.lua
 turtle/farm.lua
