@@ -1,4 +1,4 @@
-local version = 3
+local version = 4
 
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
@@ -40,6 +40,14 @@ local function createUser()
     userColor = data.color
 end
 
+function getTime()
+    local hours = textutils.formatTime(os.time(), true)
+    if #hours == 4 then
+        hours = ' ' + hours
+    end
+    return ('day: ' .. os.day() .. ' time: ' .. hours)
+end
+
 function init()
     m.setTextScale(0.5)
     m.setBackgroundColor(colors.black)
@@ -65,7 +73,7 @@ function title()
     nextLine()
     m.write(' ENDERCHAT ')
     m.setTextColor(colors.lightGray)
-    writeRight('day: ' .. os.day() .. ' time: ' .. textutils.formatTime(os.time(), true))
+    writeRight(getTime())
     m.setTextColor(colors.purple)
     nextLine()
     fill('-')
@@ -153,7 +161,7 @@ function createNewMsg()
     term.setCursorPos(1, th)
     local text = read()
     if not (text == nil) then
-        local msg = {user = user, userColor = userColor, time = 'day: ' .. os.day() .. ' time: ' .. textutils.formatTime(os.time(), true) , msg = text}
+        local msg = {user = user, userColor = userColor, time = getTime() , msg = text}
         modem.transmit(4546, 0, msg)
     end
     blocked = false
