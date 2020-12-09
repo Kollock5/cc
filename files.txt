@@ -8,7 +8,8 @@ pocket/gps.lua
 pocket/zollstock.lua
 server/chatServer.lua
 server/updateServer.lua
-turtle/buildDisel.lua
+turtle/build/disel.lua
+turtle/build/excavator.lua
 turtle/farm.lua
 turtle/mine.lua
 turtle/move.lua
