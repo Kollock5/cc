@@ -1,4 +1,4 @@
-local version = 1
+local version = 2
 
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
@@ -17,7 +17,7 @@ local function loadUser()
     local file = fs.open('data/chatClient/user', 'r')
     local data = file.readAll()
     file.close()
-    data = textutils.unserialize(data)
+    local data = textutils.unserialize(data)
     user = data.user
     userColor = data.color
 end
@@ -32,10 +32,12 @@ local function createUser()
     local tw, th = term.getSize()
     term.setCursorPos(1, th)
     local newUser = read()
-    data = {user = newUser, color = 8192}
+    local data = {user = newUser, color = 8192}
     local file = fs.open('data/chatClient/user', 'w')
     file.write(textutils.serialize(data))
     file.close()
+    user = data.user
+    userColor = data.color
 end
 
 function init()
