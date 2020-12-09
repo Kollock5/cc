@@ -1,4 +1,4 @@
-local version = 2
+local version = 3
 
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
@@ -50,12 +50,13 @@ while true do
             break
         end
         if event == 'modem_message' then
-            term.setTextColor(message.userColor)
-            term.write(message.user)
-            term.setTextColor(colors.white)
-            print(' send ' .. message.msg .. ' at ' ..  message.time)
-            msgReceived(message)
-
+            if not (message.user == nil) then
+                term.setTextColor(message.userColor)
+                term.write(message.user)
+                term.setTextColor(colors.white)
+                print(' send ' .. message.msg .. ' at ' ..  message.time)
+                msgReceived(message)
+            end
         end
         if event == 'key' and mSide == 85 then
 

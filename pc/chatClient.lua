@@ -1,4 +1,4 @@
-local version = 2
+local version = 3
 
 if fs.exists('api/update.lua') then
     os.loadAPI('api/update.lua')
@@ -174,6 +174,7 @@ function termDisplay()
 end
 
 init()
+sleep(1)
 
 modem.open(4545)
 while true do
