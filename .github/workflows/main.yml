@@ -1,0 +1,20 @@
+name: Deploy to Server
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with: 
+          host: maxk.eu
+          username: m4x
+          key: ${{ secrets.CC }}
+          port: 22
+          script: | 
+            cd ~/minecraft/world/computercraft/computer/0/cc
+            git pull origin main
+            git status
